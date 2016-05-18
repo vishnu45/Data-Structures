@@ -1,14 +1,19 @@
 #include <iostream>
 using namespace std;
 
+//--------------------------------------------------------------------
 // Structure: Linked list struct
+//--------------------------------------------------------------------
 struct LinkList
 {
 	int data;
 	struct LinkList *next;
 };
 
-// Function: To print all elements in the linked list whose head node is provided
+//--------------------------------------------------------------------
+// Function: To print all elements in the linked list whose head node 
+// is provided
+//--------------------------------------------------------------------
 void printList(struct LinkList *node)
 {
 	while(node != NULL)
