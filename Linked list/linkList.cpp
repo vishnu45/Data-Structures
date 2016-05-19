@@ -1,3 +1,9 @@
+/* *******************************************************************
+ Creating and traversing a single linked list
+ Time complexity	: O(n), for scanning the list of size n
+ Space complexity	: O(1), for temporary variable node
+******************************************************************** */
+
 #include <iostream>
 using namespace std;
 
