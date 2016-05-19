@@ -44,6 +44,22 @@ int list_length(struct LinkList *node)
 	return count;
 }
 
+//--------------------------------------------------------------------
+// Function: To search for particular value in linked list 
+//--------------------------------------------------------------------
+bool search(struct LinkList *node, int value)
+{
+	if(node -> data == value)
+		return true;
+	while(node -> next != NULL)
+	{
+		if(node -> data == value)
+			return true;
+		node = node -> next;
+	}
+	return false;
+}
+
 int main()
 {
 	// declare the 3 nodes
@@ -67,6 +83,13 @@ int main()
 
 	// find linked list length
 	cout << "Length of List = " << list_length(head) << endl;
+
+	// search for element in linked list
+	int value;
+	cout << "Please enter value to search: ";
+	cin >> value;
+	search(head, value) ? cout << "Value present" : cout << "Value not present";
+	cout << endl;
 
 	return 0;
 }
