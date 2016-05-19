@@ -1,3 +1,9 @@
+/* *******************************************************************
+ Inserting elements in a singly linked list
+ Time complexity	: O(n), to insert at the end in worst case
+ Space complexity	: O(1), for the temporary variable
+******************************************************************** */
+
 #include <iostream>
 using namespace std;
 
@@ -30,6 +36,8 @@ void dispList(struct LinkedList *node)
 void insert_front(struct LinkedList **head, int value)
 {
 	struct LinkedList *new_node = new LinkedList;
+
+	cout << "Value to insert: " << value << endl;
 	new_node -> data = value;
 	new_node -> next = *head;
 	*head = new_node;	
@@ -42,6 +50,8 @@ void insert_end(struct LinkedList **head, int value)
 {
 	struct LinkedList *new_node = new LinkedList;
 	struct LinkedList *node = new LinkedList;
+	
+	cout << "Value to insert: " << value << endl;
 	node = *head;
 
 	new_node -> data = value;
@@ -60,6 +70,8 @@ void insert_btw(struct LinkedList **head, int value)
 {
 	struct LinkedList *new_node = new LinkedList;
 	struct LinkedList *node = new LinkedList;
+	
+	cout << "Value to insert: " << value << endl;
 	node = *head;
 	new_node -> data = value;
 	while (true)
@@ -89,7 +101,6 @@ void insert_btw(struct LinkedList **head, int value)
 		}
 		node = node -> next;
 	}
-
 }
 
 int main()
