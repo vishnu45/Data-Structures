@@ -1,6 +1,13 @@
+/* *******************************************************************
+ Basic stack implementation using integer array 
+******************************************************************** */
+
 #include <iostream>
 using namespace std;
 
+//--------------------------------------------------------------------
+// Structure: Stack struct
+//--------------------------------------------------------------------
 struct Stack
 {
 	int top;
@@ -8,6 +15,9 @@ struct Stack
 	int *array;
 };
 
+//--------------------------------------------------------------------
+// Function: To create a new stack for given capacity
+//--------------------------------------------------------------------
 struct Stack *createStack(int capacity)
 {
 	struct Stack *stObject = new Stack;
@@ -18,16 +28,25 @@ struct Stack *createStack(int capacity)
 	return stObject;
 }
 
+//--------------------------------------------------------------------
+// Function: To check if a stack is empty
+//--------------------------------------------------------------------
 bool isEmpty(struct Stack *sObject)
 {
 	return ( sObject -> top == -1 );
 }
 
+//--------------------------------------------------------------------
+// Function: To check if a stack is full
+//--------------------------------------------------------------------
 bool isFull(struct Stack *sObject)
 {
 	return ( sObject -> top == (sObject -> capacity-1) );
 }
 
+//--------------------------------------------------------------------
+// Function: To push elements onto stack
+//--------------------------------------------------------------------
 void push(struct Stack *sObject, int value)
 {
 	if(isFull(sObject))
@@ -40,6 +59,9 @@ void push(struct Stack *sObject, int value)
 	cout << "Pushed value: " << value << " onto stack." << endl;
 }
 
+//--------------------------------------------------------------------
+// Function: To pop elements off of stack
+//--------------------------------------------------------------------
 void pop(struct Stack *sObject)
 {
 	if(isEmpty(sObject))
@@ -52,13 +74,13 @@ void pop(struct Stack *sObject)
 	
 }
 
-// topElement function
+//--------------------------------------------------------------------
+// Function: To check retrieve top element in stack
+//--------------------------------------------------------------------
 int topElement(struct Stack *sObject)
 {	
 	return sObject -> array [sObject -> top];
 }
-
-// size function
 
 int main()
 {
