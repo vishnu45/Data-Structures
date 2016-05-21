@@ -75,7 +75,7 @@ void pop(struct Stack *sObject)
 }
 
 //--------------------------------------------------------------------
-// Function: To check retrieve top element in stack
+// Function: To retrieve top element in stack
 //--------------------------------------------------------------------
 int topElement(struct Stack *sObject)
 {	
