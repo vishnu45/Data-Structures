@@ -10,11 +10,85 @@ struct Stack
 
 struct Stack *createStack(int capacity)
 {
+	struct Stack *stObject = new Stack;
+	stObject -> top = -1;
+	stObject -> capacity = capacity;
+	int *sArray = new int [capacity];
+	stObject -> array = sArray;
+	return stObject;
+}
+
+bool isEmpty(struct Stack *sObject)
+{
+	return ( sObject -> top == -1 );
+}
+
+bool isFull(struct Stack *sObject)
+{
+	return ( sObject -> top == (sObject -> capacity-1) );
+}
+
+void push(struct Stack *sObject, int value)
+{
+	if(isFull(sObject))
+	{
+		cout << "Stack is full. Can't push any more elements." << endl;
+		return;
+	}
+	sObject -> top ++;
+	sObject -> array[sObject -> top] = value;
+	cout << "Pushed value: " << value << " onto stack." << endl;
+}
+
+void pop(struct Stack *sObject)
+{
+	if(isEmpty(sObject))
+	{
+		cout << "Stack is empty. No element present to pop." << endl;
+		return;
+	}
+	cout << "Popped value:" << sObject -> array[sObject -> top] <<" from stack." << endl;
+	sObject -> top--;
 	
 }
 
+// topElement function
+int topElement(struct Stack *sObject)
+{	
+	return sObject -> array [sObject -> top];
+}
+
+// size function
+
 int main()
 {
+	// Create a stack
+	struct Stack *sObject = new Stack;
+	sObject = createStack(5);
+
+	// push elements into stack
+	isEmpty(sObject) 	? cout << "Stack is empty" << endl 
+						: cout << "Stack is not empty" << endl;
+	pop(sObject);
+	push(sObject, 1);
+	isEmpty(sObject) 	? cout << "Stack is empty" << endl 
+						: cout << "Stack is not empty" << endl;
+	push(sObject, 2);
+	push(sObject, 3);
+	push(sObject, 4);
+	cout << "Top element: " << topElement(sObject) << endl;
+	isFull(sObject) 	? cout << "Stack is full" << endl 
+						: cout << "Stack is not full" << endl;
+	cout << "Top element on stack: " << topElement(sObject) << endl;
+	push(sObject, 5);
+	isFull(sObject) 	? cout << "Stack is full" << endl 
+						: cout << "Stack is not full" << endl;
+	push(sObject, 6);
+
+	// pop elements from the stack
+	pop(sObject);
+	pop(sObject);
+	cout << "Top element on stack: " << topElement(sObject) << endl;	
 
 	return 0;
 }
