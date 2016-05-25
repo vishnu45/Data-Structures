@@ -41,11 +41,18 @@ int main()
       8-9  10-11 12-13 14-15 
 	---------------------------*/
 
+    cout << "InOrder traversal: ";
 	InOrder(root);
-	cout << endl;
+	cout << endl << endl;
+	cout << "PreOrder traversal: ";
 	PreOrder(root);
-	cout << endl;
+	cout << endl << endl;
+	cout << "PostOrder traversal: ";
 	PostOrder(root);
+	cout << endl << endl;
+	cout << "LevelOrder traversal: ";
+	cout << endl;
+	LevelOrderTraversal(root);		
 
 	return 0;
 }
