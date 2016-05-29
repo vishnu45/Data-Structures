@@ -104,6 +104,57 @@ struct bst* Search(struct bst *tObject, int value)
 	return NULL;
 }
 
+// find min key node
+struct bst* Min(struct bst *tObject)
+{
+	if (tObject == NULL)
+		return NULL;
+	while (tObject -> left != NULL)	
+		tObject = tObject -> left;
+	return tObject;
+}
+
+// find max key node
+struct bst* Max(struct bst *tObject)
+{
+	if (tObject == NULL)
+		return NULL;
+	while (tObject -> right != NULL)	
+		tObject = tObject -> right;
+	return tObject;
+}
+
+
 // delete node
+struct bst* deleteVal(struct bst *tObject, int value)
+{
+	if (tObject == NULL)
+		return NULL;
+
+	if (value > tObject -> data)
+		tObject -> right = deleteVal(tObject -> right, value);
+
+	else if (value < tObject -> data)
+		tObject -> left = deleteVal(tObject -> left, value);
+
+	else
+	{
+		if (tObject -> left == NULL)
+		{
+			tObject = tObject -> right;
+			return tObject;
+		}
+		else if (tObject -> right == NULL)
+		{
+			tObject = tObject -> left;
+			return tObject;
+		}
+
+		struct bst *temp = Min(tObject -> right);
+		tObject -> data = temp -> data;
+		tObject -> right = deleteVal(tObject -> right, temp -> data);
+	}
+	return tObject;
+}
 
 #endif
