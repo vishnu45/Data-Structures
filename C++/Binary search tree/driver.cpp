@@ -16,5 +16,9 @@ int main()
 
 	LevelOrderTraversal(tObject);
 
+	Search(tObject, 21)
+		? cout << "Key found at: " << Search(tObject, 21) -> data << endl
+		: cout << "Key not present in tree" << endl;
+
 	return 0;
 }

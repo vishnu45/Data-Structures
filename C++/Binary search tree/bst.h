@@ -86,6 +86,23 @@ void LevelOrderTraversal(struct bst *tObject)
 }
 
 // search node
+struct bst* Search(struct bst *tObject, int value)
+{
+	struct bst *temp = new bst;
+	temp = tObject;
+	if (temp == NULL)
+		return NULL;
+	while (temp != NULL)
+	{
+		if (value == temp -> data)
+			return temp;
+		else if (value >= temp -> data)
+			temp = temp -> right;
+		else
+			temp = temp -> left;
+	}
+	return NULL;
+}
 
 // delete node
 
