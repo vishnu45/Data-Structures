@@ -38,7 +38,7 @@ int main()
 	cout << endl;
 	LevelOrderTraversal(tObject);
 	cout << endl;
-	tObject = deleteVal(tObject, 20);
+	tObject = deleteVal(tObject, 10);
 	LevelOrderTraversal(tObject);
 
 	return 0;
