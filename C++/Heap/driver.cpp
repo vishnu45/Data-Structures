@@ -4,13 +4,24 @@ using namespace std;
 
 int main()
 {
-	MinHeap hObject(5);
-	hObject.InsertKey(17);
-	hObject.InsertKey(13);
+	MinHeap hObject(7);
+	hObject.InsertKey(7);
 	hObject.InsertKey(6);
+	hObject.InsertKey(5);
+	// hObject.DisplayHeap();
+
+	hObject.InsertKey(4);
+	hObject.InsertKey(3);
+	hObject.InsertKey(2);
+	hObject.InsertKey(1);
 	hObject.DisplayHeap();
 
-	hObject.InsertKey(18);
+	cout << "Smallest element: " << hObject.GetMin() << endl;
+	hObject.ExtractMin();
 	hObject.DisplayHeap();
+
+	hObject.DeleteKey(3);
+	hObject.DisplayHeap();
+
 	return 0;
 }
