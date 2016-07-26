@@ -7,6 +7,15 @@ struct node
 	struct node *next;
 };
 
+class LinkedList
+{
+public:
+	LinkedList();
+	void Push();
+	void Append();
+	void Insert();
+	void Remove();
+	void PrintList();
+};
+
 #endif
-#  Feature
-# B2
