@@ -20,15 +20,11 @@ public:
 	void Insert(int position, int value);
 	void Remove(int position);
 	void PrintList();
-	// void Exists(int value);
+	bool Exists(int value);
 
 	// Extra utilities
-
-	struct node* next(int value);
-	struct node* prev(int value);
 	
 	void Swap(int value1, int value2);
-	// check if node present 
 
 };
 
