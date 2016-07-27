@@ -9,12 +9,16 @@ struct node
 
 class LinkedList
 {
+private:
+	struct node *head;
+	int listLength;
+
 public:
 	LinkedList();
-	void Push();
-	void Append();
-	void Insert();
-	void Remove();
+	void Push(int value);
+	void Append(int value);
+	void Insert(int position, int value);
+	void Remove(int position);
 	void PrintList();
 };
 
