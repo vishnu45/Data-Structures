@@ -167,3 +167,88 @@ void LinkedList::Remove(int position)
 
 	return;
 }
+
+// function to check if value exists in linked list
+bool LinkedList::Exists(int value)
+{
+	cout << "Checking if value: " << value 
+		 << " present in the linked list ..." << endl;
+	struct node *temp = new node;
+
+	if (head -> data == value)
+		return true;
+
+	temp = head;
+	while (temp -> data != value)
+	{
+		if (!temp -> next)
+			return false;
+		temp = temp -> next;
+	}
+	return true;
+}
+
+// function to swap two nodes in the linked list
+void LinkedList::Swap(int value1, int value2)
+{
+	cout << "Swapping values " << value1 
+		 << " and " << value2 << " ..." << endl;
+
+	struct node *node1 = new node;
+	struct node *node1_p = new node;
+	struct node *node2 = new node;
+	struct node *node2_p = new node;
+	struct node *temp = new node;
+
+	// find node1 and previous node to node1
+	if (head -> data == value1)
+	{
+		node1 = head;
+		node1_p = NULL;
+	}
+	else
+	{
+		node1 = head;
+		while (node1 -> data != value1)
+		{
+			node1_p = node1;
+			node1 = node1 -> next;
+		}
+	}
+
+	// find node2 and previous node to node2
+	if (head -> data == value2)	
+	{
+		node2 = head;
+		node2_p = NULL;
+	}
+	else
+	{
+		node2 = head;
+		while (node2 -> data != value2)
+		{
+			node2_p = node2;
+			node2 = node2 -> next;
+		}
+	}
+
+	// check if node1 is head node
+	if (node1_p != NULL)
+		node1_p -> next = node2;
+	else
+		head = node2;
+
+	// check if node2 is head node
+	if (node2_p != NULL)
+		node2_p -> next = node1;
+	else
+		head = node1;
+
+	
+	temp = node1 -> next;
+	node1 -> next = node2 -> next;
+	node2 -> next = temp;
+
+	return;
+
+}

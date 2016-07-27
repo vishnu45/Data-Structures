@@ -20,6 +20,12 @@ public:
 	void Insert(int position, int value);
 	void Remove(int position);
 	void PrintList();
+	bool Exists(int value);
+
+	// Extra utilities
+	
+	void Swap(int value1, int value2);
+
 };
 
 #endif
