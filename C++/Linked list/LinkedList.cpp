@@ -232,16 +232,19 @@ void LinkedList::Swap(int value1, int value2)
 		}
 	}
 
+	// check if node1 is head node
 	if (node1_p != NULL)
 		node1_p -> next = node2;
 	else
 		head = node2;
 
+	// check if node2 is head node
 	if (node2_p != NULL)
 		node2_p -> next = node1;
 	else
 		head = node1;
 
+	
 	temp = node1 -> next;
 	node1 -> next = node2 -> next;
 	node2 -> next = temp;
