@@ -244,11 +244,26 @@ void LinkedList::Swap(int value1, int value2)
 	else
 		head = node1;
 
-	
+	// swap the next nodes
 	temp = node1 -> next;
 	node1 -> next = node2 -> next;
 	node2 -> next = temp;
 
 	return;
+}
 
+// function to reverse the linked list
+void LinkedList::ReverseList()
+{
+	// find the node up to which nodes need to swapped
+	int swapLength = (listLength/2);
+	int i = 1;
+
+	// swap nodes until swapLength
+	while (i <= swapLength)
+	{
+		Swap(i, listLength-i+1);
+		i++;
+	}
+	return;
 }

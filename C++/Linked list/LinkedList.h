@@ -25,6 +25,7 @@ public:
 	// Extra utilities
 	
 	void Swap(int value1, int value2);
+	void ReverseList();
 
 };
 
