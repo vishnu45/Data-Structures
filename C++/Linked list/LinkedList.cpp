@@ -25,7 +25,7 @@ void LinkedList::PrintList()
 		cout << temp -> data << " -> ";
 		temp = temp -> next;
 	}
-	cout << endl;
+	cout << "NULL" << endl;
 	return;
 }
 

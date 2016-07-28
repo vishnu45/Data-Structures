@@ -29,11 +29,15 @@ int main()
 	list1.Swap(1,6);
 	list1.PrintList();
 
-	if (list1.Exists(0))
-		cout << "Yes";
+	if (list1.Exists(1))
+		cout << "Yes\n";
 	else
-		cout << "No";
-	cout << endl;
+		cout << "No\n";
+	if (list1.Exists(0))
+		cout << "Yes\n";
+	else
+		cout << "No\n";
+
 	list1.ReverseList();
 	list1.PrintList();
 
