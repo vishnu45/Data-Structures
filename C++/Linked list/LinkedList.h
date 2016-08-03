@@ -15,6 +15,8 @@ private:
 
 public:
 	LinkedList();
+	struct node * GetHead();
+	int GetLength();
 	void Push(int value);
 	void Append(int value);
 	void Insert(int position, int value);

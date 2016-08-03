@@ -29,6 +29,18 @@ void LinkedList::PrintList()
 	return;
 }
 
+// function to retrieve the head pointer of the linked list
+struct node* LinkedList::GetHead()
+{
+	return head;
+}
+
+// function to retrive the length of the linked list
+int LinkedList::GetLength()
+{
+	return listLength;
+}
+
 // function to push elements to the front of a linked list
 void LinkedList::Push(int value)
 {
