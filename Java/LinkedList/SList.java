@@ -132,7 +132,25 @@ public class SList {
 
 	/** Deletes an item at the given index */
 	public void DeleteAt(int index) {
-		
+		// check if size is zero
+		if (size == 0) {
+			System.out.println("List is empty");
+			return;
+		}
+		// check if index is out of bounds
+		if (index < 0 || index >= size) {
+			System.out.println("Index out of bounds");
+			return;
+		}
+		Node p = sentinel;
+		int i = 0;
+		while (i < index) {
+			p = p.next;
+			i++;
+		}
+		p.next = p.next.next;
+		size--;
+		return;
 	}
 
 	/** Prints the list */

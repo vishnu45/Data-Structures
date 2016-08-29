@@ -222,7 +222,44 @@ public class TestDriver {
 		System.out.println("PASS - Test#08: Insert at index");
 	}
 
-	/** Test to check the Size() function */
+	/** Test to check the DeleteAt() function */
+	@Test
+	public static void testDeleteAt() {
+		// check for empty list
+		SList S1 = new SList();
+		S1.DeleteAt(0);
+		try {
+			assertEquals(0, S1.Size());
+		} catch (Exception e) {
+			System.out.println("FAIL - Test#09: Incorrect deletion"
+				+ " operation for empty list");
+			return;
+		}
+
+		// check for non-empty list
+		S1.InsertFront(3);
+		S1.InsertFront(1);
+		S1.DeleteAt(0);
+		try {
+			assertTrue(1 != S1.Get(0));
+			assertEquals(1, S1.Size());
+		} catch (Exception e) {
+			System.out.println("FAIL - Test#09: Incorrect deletion"
+				+ " operation for non-empty list");
+			return;
+		}
+
+		// check for out of bounds
+		S1.DeleteAt(10);
+		try {
+			assertEquals(1, S1.Size());
+		} catch (Exception e) {
+			System.out.println("FAIL - Test#09: Incorrect deletion"
+				+ " operation for out of bounds");
+			return;
+		}
+		System.out.println("PASS - Test#09: Delete at index");
+	}
 
 	/** Demo function */
 	public static void demo() {
@@ -238,6 +275,10 @@ public class TestDriver {
 		S1.InsertAt(7, 7);
 		S1.InsertAt(7, 10);
 		S1.Print();
+		S1.DeleteAt(7);
+		S1.DeleteAt(0);
+		S1.DeleteAt(7);
+		S1.Print();
 	}
 
 	public static void main(String[] args) {
@@ -249,6 +290,7 @@ public class TestDriver {
 		testInsertFront();
 		testInsertBack();
 		testInsertAt();
+		testDeleteAt();
 
 		// demo();
 	}
