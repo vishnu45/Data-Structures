@@ -186,9 +186,43 @@ public class TestDriver {
 		System.out.println("PASS - Test#07: List insertion at back");
 	}
 
-	/** Test to check the Size() function */
+	/** Test to check the InsertAt() function */
+	@Test
+	public static void testInsertAt() {
+		// check for empty list
+		SList S1 = new SList();
+		S1.InsertAt(5, 0);
+		try {
+			assertEquals(5, S1.Get(0));
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#08: Incorrect insertion"
+				+ " of item at index for empty list");
+			return;
+		}
 
-	/** Test to check the Insert() function */
+		// check for non-empty list
+		S1.InsertAt(6, 1);
+		try {
+			assertEquals(6, S1.Get(1));
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#08: Incorrect insertion"
+				+ " of item at index for non-empty list");
+			return;
+		}
+
+		// check for out of bounds
+		S1.InsertAt(7, 4);
+		try {
+			assertEquals(2, S1.Size());
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#08: Incorrect insertion"
+				+ " of item for out of bound index");
+			return;
+		}
+		System.out.println("PASS - Test#08: Insert at index");
+	}
+
+	/** Test to check the Size() function */
 
 	/** Demo function */
 	public static void demo() {
@@ -196,8 +230,13 @@ public class TestDriver {
 		S1.InsertFront(2);
 		S1.InsertFront(1);
 		S1.Print();
-		S1.InsertBack(4);
 		S1.InsertBack(5);
+		S1.InsertBack(6);
+		S1.Print();
+		S1.InsertAt(0, 0);
+		S1.InsertAt(4, 4);
+		S1.InsertAt(7, 7);
+		S1.InsertAt(7, 10);
 		S1.Print();
 	}
 
@@ -209,6 +248,7 @@ public class TestDriver {
 		testGetBack();
 		testInsertFront();
 		testInsertBack();
+		testInsertAt();
 
 		// demo();
 	}

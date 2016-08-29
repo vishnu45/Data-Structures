@@ -113,13 +113,26 @@ public class SList {
 	}
 
 	/** Inserts an element at the specified  index */
-	public void InsertAt(int x, int value) {
-
+	public void InsertAt(int value, int index) {
+		if (index < 0 || index > size) {
+			System.out.println("Index out of bounds");
+			return;
+		}
+		Node p = sentinel;
+		int i = 0;
+		while (i < index) {
+			p = p.next;
+			i++;
+		}
+		Node newNode = new Node(value, p.next);
+		p.next = newNode;
+		size++;
+		return;
 	}
 
 	/** Deletes an item at the given index */
 	public void DeleteAt(int index) {
-
+		
 	}
 
 	/** Prints the list */
