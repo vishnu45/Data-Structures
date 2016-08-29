@@ -135,8 +135,56 @@ public class TestDriver {
 	}
 
 	/** Test to check the InsertFront() function */
+	@Test
+	public static void testInsertFront() {
+		// check for empty list
+		SList S1 = new SList();
+		S1.InsertFront(2);		
+		try {
+			assertEquals(2, S1.Get(0));			
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#06: Insertion at front into"
+			+ " empty list incorrect");
+			return;
+		}
+
+		// check for non-empty list
+		S1.InsertFront(1);
+		try {
+			assertEquals(1, S1.Get(0));
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#06: Insertion at front of"
+			+ " non-empty list incorrect");
+			return;
+		}
+		System.out.println("PASS - Test#06: List insertion at front");
+	}
 
 	/** Test to check the InsertBack() function */
+	@Test
+	public static void testInsertBack() {
+		// check for empty list
+		SList S1 = new SList();
+		S1.InsertBack(1);
+		try {
+			assertEquals(1, S1.Get(0));			
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#07: Insertion at back of"
+			+ " empty list incorrect");
+			return;
+		}
+
+		// check for non empty list
+		S1.InsertBack(2);
+		try {
+			assertEquals(2, S1.Get(1));
+		} catch (AssertionError e) {
+			System.out.println("FAIL - Test#07: Insertion at back of"
+			+ " non-empty list incorrect");
+			return;
+		}
+		System.out.println("PASS - Test#07: List insertion at back");
+	}
 
 	/** Test to check the Size() function */
 
@@ -144,19 +192,24 @@ public class TestDriver {
 
 	/** Demo function */
 	public static void demo() {
-		SList S1 = new SList(5);
-		S1.InsertFront(4);
-		S1.InsertFront(3);
+		SList S1 = new SList(3);
+		S1.InsertFront(2);
+		S1.InsertFront(1);
+		S1.Print();
+		S1.InsertBack(4);
+		S1.InsertBack(5);
 		S1.Print();
 	}
 
 	public static void main(String[] args) {
-		// testListDeclaration();
-		// testListInstantiation();
-		// testGetFront();
-		// testIsEmpty();
-		// testGetBack();
+		testListDeclaration();
+		testListInstantiation();
+		testGetFront();
+		testIsEmpty();
+		testGetBack();
+		testInsertFront();
+		testInsertBack();
 
-		demo();
+		// demo();
 	}
 }

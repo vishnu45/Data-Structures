@@ -43,6 +43,7 @@ public class SList {
 		int i = 0;
 		while (i < index) {
 			p = p.next;
+			i++;
 		}
 		return p.item;
 	}
@@ -89,7 +90,20 @@ public class SList {
 
 	/** Inserts an element to the end of the list */
 	public void InsertBack(int value) {
-
+		// if list is empty
+		if (size == 0) {
+			sentinel.next = new Node(value, null);
+			size++;
+			return;
+		}
+		Node newNode = new Node(value, null);
+		Node p = sentinel.next;
+		while (p.next != null) {
+			p = p.next;
+		}
+		p.next = newNode;
+		size++;
+		return;
 	}
 
 	/** Retunrs the size of the list */
