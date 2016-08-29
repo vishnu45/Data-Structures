@@ -7,6 +7,7 @@ public class SList {
 	public SList() {
 		sentinel = new Node(-1, null);
 		size = 0;
+		return;
 	}
 
 	/** Creates new SList of size 1 */
@@ -14,6 +15,7 @@ public class SList {
 		sentinel = new Node(-1, null);
 		sentinel.next = new Node(x, null);
 		size = 1;
+		return;
 	}
 
 	/** Check if list is empty */
@@ -82,6 +84,7 @@ public class SList {
 		Node newNode = new Node(value, sentinel.next);
 		sentinel.next = newNode;
 		size++;
+		return;
 	}
 
 	/** Inserts an element to the end of the list */
@@ -107,7 +110,18 @@ public class SList {
 
 	/** Prints the list */
 	public void Print() {
-
+		// check if size is 0
+		if (size == 0) {
+			System.out.println("List is empty");
+			return;
+		}
+		Node p = sentinel.next;
+		while (p != null) {
+			System.out.print(p.item + " -> ");
+			p = p.next;
+		}
+		System.out.println("NULL");
+		return;
 	}
 
 }

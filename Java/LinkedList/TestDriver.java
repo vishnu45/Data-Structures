@@ -146,6 +146,8 @@ public class TestDriver {
 	public static void demo() {
 		SList S1 = new SList(5);
 		S1.InsertFront(4);
+		S1.InsertFront(3);
+		S1.Print();
 	}
 
 	public static void main(String[] args) {
