@@ -21,7 +21,7 @@ public class DList {
 	/** Check if the list is empty */
 	public boolean IsEmpty() {
 
-		return false;
+		return (size == 0);
 	}
 
 	/** Returns the element at the specified index of the list */
@@ -67,7 +67,19 @@ public class DList {
 
 	/** Inserts an element at the end of the list */
 	public void InsertBack(int value) {
-		
+		// check if list is empty
+		if (size == 0) {
+			sentinel.next = new DNode(value, null, null);
+			sentinel.next.next = sentinel.next;
+			sentinel.next.previous = sentinel.next;
+			size++;
+			return;
+		}
+		DNode newNode = new DNode(value, sentinel.next, sentinel.next.previous);
+		sentinel.next.previous.next = newNode;
+		sentinel.next.previous = newNode;
+		size++;
+		return;
 	}
 
 	/** Inserts an element at the specified index in the list */
@@ -132,6 +144,21 @@ public class DList {
 		D2.InsertFront(4);
 		D1.Print();
 		D2.Print();
+
+		System.out.println();
+		// InsertBack() testing ---------------------------
+		DList D3 = new DList();
+		DList D4 = new DList(25);
+		D3.InsertBack(2);
+		D4.InsertBack(27);
+		D4.InsertBack(28);
+		D2.InsertBack(6);
+		System.out.println("Size of D2: " + D2.Size());
+		System.out.println("Size of D3: " + D3.Size());
+		System.out.println("Size of D4: " + D4.Size());
+		D2.Print();
+		D3.Print();
+		D4.Print();
 
 	}
 }
