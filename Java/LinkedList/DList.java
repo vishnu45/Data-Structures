@@ -23,7 +23,7 @@ public class DList {
 
 		return (size == 0);
 	}
-
+ 
 	/** Returns the element at the specified index of the list */
 	public DNode Get(int index) {
 		// check if list is empty
@@ -49,12 +49,20 @@ public class DList {
 
 	/** Returns the first element in the list */
 	public DNode GetFront() {
-		return sentinel;
+		if (size == 0) {
+			System.out.println("List is empty");
+			return null;
+		}
+		return sentinel.next;
 	}
 
 	/** Returns the element to the end of the list */
 	public DNode GetBack() {
-		return sentinel;
+		if (size == 0) {
+			System.out.println("List is empty");
+			return null;
+		}
+		return sentinel.next.previous;
 	}
 
 	/** Returns the size of the list */
@@ -102,7 +110,35 @@ public class DList {
 
 	/** Inserts an element at the specified index in the list */
 	public void InsertAt(int value, int index) {
-
+		// check if index out of bounds
+		if (index < 0 || index > size) {
+			System.out.println("Index out of bounds");
+			return;
+		}
+		DNode newNode = new DNode(value, null, null);
+		// if list is empty
+		if (size == 0) {
+			sentinel.next = newNode;
+			newNode.next = newNode;
+			newNode.previous = newNode;
+			size++;
+			return;
+		}
+		DNode p = sentinel.next;
+		int i = 0;
+		while (i < index) {
+			p = p.next;
+			i++;
+		}
+		if (index == 0) {
+			sentinel.next = newNode;
+		}
+		newNode.previous = p.previous;
+		p.previous.next = newNode;
+		p.previous = newNode;
+		newNode.next = p;
+		size++;
+		return;
 	}
 
 	/** Deletes an item at the given index in the list */
@@ -137,6 +173,7 @@ public class DList {
 		// Constructor testing ----------------------------
 		// Size() testing ---------------------------------
 		// IsEmpty() testing ------------------------------
+		DList D0 = new DList();
 		DList D1 = new DList();
 		DList D2 = new DList(5);
 		System.out.println("Size of D1: " + D1.Size());
@@ -180,10 +217,29 @@ public class DList {
 
 		System.out.println();
 		// Get() testing ----------------------------------
+		// GetFront() testing -----------------------------
+		// GetBack() testing ------------------------------
 		System.out.println("Item at index 0: " + D4.Get(0).item);
 		System.out.println("Item at index 1: " + D4.Get(1).item);
 		System.out.println("Item at index 2: " + D4.Get(2).item);
 		System.out.println("Item at index 3: " + D4.Get(3));
+		System.out.println("Item at index 0: " + D0.Get(0));
+		System.out.println("Front of D0: " + D0.GetFront());
+		System.out.println("Front of D4: " + D4.GetFront().item);
+		System.out.println("Back of D0: " + D0.GetBack());
+		System.out.println("Back of D4: " + D4.GetBack().item);		
+		
+		System.out.println();
+		// InsertAt() testing -----------------------------
+		D0.InsertAt(0, 1);
+		D0.InsertAt(99, 0);
+		D0.Print();
+		D4.InsertAt(23, 0);
+		D4.InsertAt(30, 4);
+		D4.InsertAt(34, 7);
+		D4.Print();
 
+		System.out.println();
+		// DeleteAt() testing -----------------------------
 	}
 }
