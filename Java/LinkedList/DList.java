@@ -26,7 +26,25 @@ public class DList {
 
 	/** Returns the element at the specified index of the list */
 	public DNode Get(int index) {
-		return sentinel;
+		// check if list is empty
+		if (size == 0) {
+			System.out.println("List is empty");
+			return null;
+		}
+
+		// check if index out of bounds
+		if (index < 0 || index >= size) {
+			System.out.println("Index out of bounds");
+			return null;
+		}
+
+		int i = 0;
+		DNode p = sentinel.next;
+		while (i < index) {
+			p = p.next;
+			i++;
+		}
+		return p;
 	}
 
 	/** Returns the first element in the list */
@@ -159,6 +177,13 @@ public class DList {
 		D2.Print();
 		D3.Print();
 		D4.Print();
+
+		System.out.println();
+		// Get() testing ----------------------------------
+		System.out.println("Item at index 0: " + D4.Get(0).item);
+		System.out.println("Item at index 1: " + D4.Get(1).item);
+		System.out.println("Item at index 2: " + D4.Get(2).item);
+		System.out.println("Item at index 3: " + D4.Get(3));
 
 	}
 }
