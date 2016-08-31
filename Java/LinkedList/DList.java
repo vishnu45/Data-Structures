@@ -47,7 +47,22 @@ public class DList {
 
 	/** Inserts an element at the front of the list */
 	public void InsertFront(int value) {
-		
+		// check if list is empty
+		if (size == 0) {
+			sentinel.next = new DNode(value, null, null);
+			sentinel.next.next = sentinel.next;
+			sentinel.next.previous = sentinel.next;
+			size++;
+			return;
+		}
+
+		// create the new node
+		DNode newNode = new DNode(value, sentinel.next, sentinel.next.previous);
+		sentinel.next.previous.next = newNode;
+		sentinel.next.previous = newNode;		
+		sentinel.next = newNode;
+		size++;
+		return;
 	}
 
 	/** Inserts an element at the end of the list */
@@ -108,6 +123,15 @@ public class DList {
 		else {
 			System.out.println("D2 is not empty");
 		}
+
+		System.out.println();
+		// InsertFront() testing --------------------------
+		// Print() testing
+		D1.InsertFront(15);
+		D1.InsertFront(13);
+		D2.InsertFront(4);
+		D1.Print();
+		D2.Print();
 
 	}
 }
