@@ -67,7 +67,18 @@ public class DList {
 
 	/** Prints the DList */
 	public void Print() {
-		
+		// check if list is empty
+		if (size == 0) {
+			System.out.println("List is empty");
+			return;
+		}
+		DNode p = sentinel.next;
+		while (! (p.next.equals(sentinel.next)) ) {
+			System.out.print(p.item + " -> ");
+			p = p.next;
+		}
+		System.out.println(p.item + " -> NULL");
+		return;
 	}
 
 
