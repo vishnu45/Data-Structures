@@ -143,7 +143,34 @@ public class DList {
 
 	/** Deletes an item at the given index in the list */
 	public void DeleteAt(int index) {
+		// check if list is empty
+		if (size == 0) {
+			System.out.println("List is empty");
+			return;
+		}
 
+		// check if index out of bounds
+		if (index < 0 || index >= size) {
+			System.out.println("Index out of bounds");
+			return;
+		}
+		DNode p = sentinel.next;
+		int i = 0;
+		while (i < index) {
+			p = p.next;
+			i++;
+		}
+		// if deleting the front node
+		if (index == 0) {
+			sentinel.next = sentinel.next.next;
+		}
+		p.next.previous = p.previous;
+		p.previous.next = p.next;
+		// p.next = null;
+		// p.previous = null;
+		p = null;
+		size--;
+		return;
 	}
 
 	/** Prints the DList */
@@ -241,5 +268,10 @@ public class DList {
 
 		System.out.println();
 		// DeleteAt() testing -----------------------------
+		D0.DeleteAt(0);
+		D0.DeleteAt(0);
+		D4.DeleteAt(2);
+		D4.DeleteAt(4);
+		D4.Print();
 	}
 }
