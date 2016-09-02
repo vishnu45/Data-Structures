@@ -1,7 +1,7 @@
 public class SList {
 
-	private Node sentinel;
-	private int size;
+	public Node sentinel;
+	public int size;
 
 	/** Creates new SList of size 0 */
 	public SList() {
