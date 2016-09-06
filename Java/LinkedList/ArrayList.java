@@ -11,7 +11,7 @@ public class ArrayList {
 
 	/** Resize the new array so that it is of the given capacity */
 	private void Resize(int capacity) {
-		int[] newItems = new int[capacity*RFACTOR];
+		int[] newItems = new int[capacity];
 		System.arraycopy(items, 0, newItems, 0, size);
 		items = newItems;
 	}
@@ -20,7 +20,7 @@ public class ArrayList {
 	public void InsertBack(int x) {
 		// check if list is full
 		if (size == items.length) {
-			Resize(size * RFACTOR);
+			Resize(size*RFACTOR);
 		}
 		items[size] = x;
 		size++;
@@ -28,8 +28,22 @@ public class ArrayList {
 
 	/** Inserts x at the specified index in the list */
 	public void InsertAt(int x, int index) {
-		
-	}
+		// check if index out of bounds
+		if (index < 0 || index > size) {
+			System.out.println("Index out of bounds");
+			return;
+		}
+		// check if list array full
+		if (size+1 == items.length) {
+			Resize(size*RFACTOR);			
+		}
+		int[] a = new int[items.length];
+		System.arraycopy(items, 0, a, 0, index);
+		a[index] = x;
+		System.arraycopy(items, index, a, index+1, size-index);
+		items = a;
+		size++;		
+	} 
 
 	/** Returns the item from the back of the list */
 	public int GetBack() {
@@ -58,9 +72,16 @@ public class ArrayList {
 
 	/** Deletes item from back of the list and returns
 	 *	deleted item */
-	public int DeleteBack() {
-
-		return 0;
+	public void DeleteBack() {
+		// check if list is empty
+		if (size == 0) {
+			System.out.println("List is empty");
+			return;
+		}
+		size--;
+		if (size < items.length/2) {			
+			Resize((items.length)/RFACTOR);
+		}
 	}
 
 	/** To print the list */
@@ -88,8 +109,8 @@ public class ArrayList {
 		A1.Print();				
 		A1.InsertBack(3);
 		A1.InsertBack(4);
-		A1.InsertBack(5);
 		A1.InsertBack(6);
+		A1.InsertBack(7);
 		A1.Print();
 		System.out.println("Back: " + A1.GetBack());
 
@@ -97,6 +118,28 @@ public class ArrayList {
 		System.out.println("Item[0]: " + A1.Get(0));
 		System.out.println("Item[4]: " + A1.Get(4));
 		System.out.println("Item[5]: " + A1.Get(5));
+
+		// InsertAt() testing -----------------------------
+		A1.InsertAt(5, 4);
+		A1.Print();
+		A1.InsertAt(0, 0);
+		A1.Print();
+		A1.InsertAt(8, 8);
+		A1.Print();
+
+		// DeleteBack() testing ---------------------------
+		A1.DeleteBack();		
+		A1.DeleteBack();
+		A1.DeleteBack();
+		A1.Print();
+		A1.DeleteBack();		
+		A1.DeleteBack();		
+		A1.DeleteBack();
+		A1.DeleteBack();
+		A1.DeleteBack();
+		A1.Print();
+		A1.DeleteBack();
+		A1.DeleteBack();		
 	}
 
 }
