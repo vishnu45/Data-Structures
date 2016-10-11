@@ -1,3 +1,6 @@
+/* --------------------------------------------------------
+	Stack implementation using linked nodes
+-------------------------------------------------------- */
 public class LinkedStack {
 
 	private Node top;
