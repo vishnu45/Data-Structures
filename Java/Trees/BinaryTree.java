@@ -2,6 +2,8 @@
 	Binary Tree implementation
 -------------------------------------------------------- */
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 public class BinaryTree {
 
 	public BinaryNode root;	
@@ -86,9 +88,53 @@ public class BinaryTree {
 
 	}
 
-	// postorder traversal
+	// postorder recursive: left -> right -> root
+	public void postOrder(BinaryNode root) {
+		if (root != null) {
+			postOrder(root.left);
+			postOrder(root.right);
+			System.out.print(root.data + " ");
+		}
+	}
 
-	// level order traversal
+	// postorder iterative: left -> right -> root
+	// public void postOrderIterative() {
+	// 	BinaryNode temp = root;
+	// 	BinaryNode current = null;
+	// 	Stack<BinaryNode> NodeStack = new Stack<BinaryNode>();
+
+	// 	// continue until stack is empty
+	// 	while (true) {
+	// 		// traverse until left leaf is reached
+	// 		while (temp != null) {
+	// 			NodeStack.push(temp);
+	// 			temp = temp.left;
+	// 		}
+
+	// 		// if right child exists
+	// 		if (NodeStack.peek().right != null) {
+	// 			temp = NodeStack.peek().right;
+	// 			continue;
+	// 		}
+
+	// 		// if right child does not exist - print leftmost node
+	// 		temp = NodeStack.pop();
+	// 		System.out.println(temp.data + " ");
+			
+	// 		temp = NodeStack.peek().right;
+	// 		// if right child present
+	// 		if (temp != null) {
+	// 			// temp = temp.left;
+	// 			continue;
+	// 		}
+
+	// 		// if right child not present
+	// 		else {
+	// 			System.out.print(NodeStack.pop().data);
+	// 			temp = NodeStack.peek().right;
+	// 		}
+	// 	}
+	// }	
 
 	// ------------------------ MAIN ------------------------
 	public static void main(String[] args) {
@@ -116,5 +162,11 @@ public class BinaryTree {
 		System.out.println();
 		System.out.println("Inorder traversal (iterative):");
 		tree.inOrderIterative();
+		System.out.println();
+		System.out.println("Postorder traversal (recursive):");
+		tree.postOrder(tree.root);
+		System.out.println();
+		System.out.println("Level order traversal:");
+		tree.levelOrder();
 	}
 }
