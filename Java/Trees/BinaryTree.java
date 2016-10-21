@@ -16,7 +16,7 @@ public class BinaryTree {
 		root = new BinaryNode(item, null, null);
 	}
 
-	// preorder traversal: root -> left child -> right child
+	// preorder recursive: root -> left child -> right child
 	public void preOrder(BinaryNode root) {
 		// if the current node is null (parent has no children)
 		if (root == null) {
@@ -51,9 +51,42 @@ public class BinaryTree {
 		}
 	}
 
-	// postorder traversal: 
+	// inorder recursive: left -> root -> right
+	public void inOrder(BinaryNode root) {
+		if (root != null) {
+			inOrder(root.left);
+			System.out.print(root.data + " ");
+			inOrder(root.right);			
+		}
+	}
 
-	// inorder traversal
+	// inorder iterative: left -> root -> right
+	public void inOrderIterative() {
+		BinaryNode temp = root;
+		Stack<BinaryNode> NodeStack = new Stack<BinaryNode>();
+
+		// continue until stack is empty
+		while (true) {
+			// continue until 
+			while (temp != null) {
+				NodeStack.push(temp);
+				// traverse to the left child
+				temp = temp.left;
+			}
+			// exit when stack is empty
+			if (NodeStack.empty()) {
+				break;
+			}
+			// move to the parent node once the left child is null
+			temp = NodeStack.pop();			
+			System.out.print(temp.data + " ");
+			// traverse to the right child
+			temp = temp.right;
+		}
+
+	}
+
+	// postorder traversal
 
 	// level order traversal
 
@@ -77,5 +110,11 @@ public class BinaryTree {
 		System.out.println();
 		System.out.println("Preorder traversal (iterative):");
 		tree.preOrderIterative();
+		System.out.println();
+		System.out.println("Inorder traversal (recursive):");
+		tree.inOrder(tree.root);
+		System.out.println();
+		System.out.println("Inorder traversal (iterative):");
+		tree.inOrderIterative();
 	}
 }
