@@ -134,7 +134,26 @@ public class BinaryTree {
 	// 			temp = NodeStack.peek().right;
 	// 		}
 	// 	}
-	// }	
+	// }
+
+	// level order traversal: print nodes at each level
+	public void levelOrder() {
+		BinaryNode temp;
+		Queue<BinaryNode> NodeQueue = new LinkedList<BinaryNode>();
+		NodeQueue.add(root);
+
+		// until there are no nodes in queue
+		while (NodeQueue.size() > 0) {
+			temp = NodeQueue.remove();
+			System.out.print(temp.data + " ");
+			if (temp.left != null) {
+				NodeQueue.add(temp.left);
+			}
+			if (temp.right != null) {
+				NodeQueue.add(temp.right);
+			}
+		}
+	}
 
 	// ------------------------ MAIN ------------------------
 	public static void main(String[] args) {
