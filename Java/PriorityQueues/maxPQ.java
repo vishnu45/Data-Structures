@@ -76,12 +76,69 @@ public class maxPQ<Key extends Comparable<Key>> {
 		}		
 	}
 
-
 	/** insert a key into the priority queue */
+	@SuppressWarnings("unchecked")
+	public void insert(Key value) {
+		// check if size is at maxCapacity of pq
+		if (size == pq.length - 1) {
+			Key[] newPQ = (Key[]) new Comparable[pq.length*2 + 1];			
+			for (int i = 1; i <= size; i++) {
+				newPQ[i] = pq[i];				 
+			}
+			size++;
+			newPQ[size] = value;
+			pq = newPQ;
+		}
+		// if there is space in pq
+		else {
+			size++;
+			pq[size] = value;
+		}
+
+		// make sure to heapify
+		// percolate up
+		int index = size;
+		for ( ; 
+			(index > 1) && // until root is checked
+			(value.compareTo(pq[index/2]) > 0);	// value > parent
+			index = index/2) // move to parent
+		{
+			pq[index] = pq[index/2];
+		}
+		// place new value at appropriate index
+		pq[index] = value;
+	}
 
 	/** return the largest key */
+	public Key findMax() {
+		// check if heap is empty
+		if (isEmpty()) {
+			System.out.println("Empty heap");
+			return null;
+		}
+		// return top most element in heap
+		else {
+			return pq[1];
+		}
+	}
 
 	/** return and remove the largest key */
+	public Key removeMax() {
+		// check if heap is empty
+		if (isEmpty()) {
+			System.out.println("Empty heap");
+			return null;
+		}
+
+		// retrive max item
+		Key maxItem = findMax();
+		// move last item to root and reduce size
+		pq[1] = pq[size];
+		size--;
+		// heapify - percolate down
+		percolate(1);
+		return maxItem;
+	}
 	
 	/** returns size of the pq */
 	public int size() {
@@ -105,5 +162,19 @@ public class maxPQ<Key extends Comparable<Key>> {
 		Integer[] A = new Integer[]{1, 2, 3, 4, 5, 6, 7};
 		maxPQ<Integer> p = new maxPQ<Integer>(A);
 		p.print();
+		System.out.println();
+		p.insert(8);
+		p.print();
+		System.out.println();
+		p.insert(7);
+		p.print();
+		System.out.println();
+		p.insert(9);
+		p.print();
+		System.out.println();
+		System.out.println("Max: " + p.findMax());
+		System.out.println("Max: " + p.removeMax());
+		p.print();
+		System.out.println();
 	}
 }
