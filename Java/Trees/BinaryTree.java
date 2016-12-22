@@ -146,9 +146,11 @@ public class BinaryTree {
 		while (NodeQueue.size() > 0) {
 			temp = NodeQueue.remove();
 			System.out.print(temp.data + " ");
+			// add the left child to the queue (if exists)
 			if (temp.left != null) {
 				NodeQueue.add(temp.left);
 			}
+			// add the right child to the queue (if exists)
 			if (temp.right != null) {
 				NodeQueue.add(temp.right);
 			}
