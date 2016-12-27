@@ -1,3 +1,17 @@
+/* --------------------------------------------------------
+					Singly-Linked List
+		----------------------------------------------
+						Time Complexity
+		----------------------------------------------
+			Average case	|	Worst case
+		----------------------------------------------
+			Access	: O(n)	|	Access	: O(n)
+			Search 	: O(n)	|	Search 	: O(n)
+			Insert 	: O(1)	|	Insert 	: O(1)
+			Delete	: O(1)	|	Delete 	: O(1)
+		----------------------------------------------
+				Space complexity : O(n)
+--------------------------------------------------------*/
 public class SList {
 
 	public Node sentinel;

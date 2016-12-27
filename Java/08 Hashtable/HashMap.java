@@ -1,3 +1,16 @@
+/* --------------------------------------------------------
+	HashMap implementation using separate chaining
+	----------------------------------------------
+					Time Complexity
+	----------------------------------------------
+		Average case	|		Worst case
+	----------------------------------------------
+		Search 	: O(1)	|	Search 	: O(n)
+		Insert 	: O(1)	|	Insert 	: O(n)
+		Delete	: O(1)	|	Delete 	: O(n)
+	----------------------------------------------
+			Space complexity : O(n)
+-------------------------------------------------------- */
 import java.util.ArrayList;
 public class HashMap<K, V> {
 
@@ -155,7 +168,4 @@ public class HashMap<K, V> {
         System.out.println(map.size());
         System.out.println(map.isEmpty());
 	}
-
-
-
 }
